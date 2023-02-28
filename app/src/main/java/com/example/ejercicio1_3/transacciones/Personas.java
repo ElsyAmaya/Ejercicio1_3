@@ -1,4 +1,4 @@
-package transacciones;
+package com.example.ejercicio1_3.transacciones;
 
 import java.sql.Blob;
 

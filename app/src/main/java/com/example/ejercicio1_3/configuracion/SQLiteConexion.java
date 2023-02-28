@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import transacciones.Transacciones;
+import com.example.ejercicio1_3.transacciones.Transacciones;
 
 public class SQLiteConexion  extends SQLiteOpenHelper{
     public SQLiteConexion(Context context, String dbname, SQLiteDatabase.CursorFactory factory, int version){

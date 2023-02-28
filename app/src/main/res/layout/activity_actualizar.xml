@@ -16,7 +16,7 @@
         android:layout_marginEnd="10dp"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
-        android:hint="Ingrese su nombre"
+        android:hint="Ingrese su nombre "
         android:inputType="textPersonName"
         android:singleLine="false"
         android:textColor="#FFFFFF"
@@ -77,7 +77,7 @@
         android:backgroundTint="#FFFFFF"
         android:ems="10"
         android:hint="Ingrese su correo electrónico"
-        android:inputType="textEmailSubject"
+        android:inputType="textEmailAddress"
         android:singleLine="false"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
@@ -121,38 +121,21 @@
         android:id="@+id/btnactualizar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="10dp"
         android:backgroundTint="#000000"
-        android:drawableRight="@drawable/salvar"
-        android:text="Guardar"
+        android:drawableRight="@drawable/actualizar"
+        android:text="ACTUALIZAR"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:cornerRadius="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.968"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtdireccion"
-        app:rippleColor="#C380BFBE" />
-
-    <Button
-        android:id="@+id/btnregistros"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#000000"
-        android:drawableRight="@drawable/flecha"
-        android:text="Registros"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        app:cornerRadius="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnactualizar"
+        app:layout_constraintVertical_bias="0.188"
         app:rippleColor="#C380BFBE" />
 
     <TextView
@@ -161,14 +144,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-black"
-        android:text="Registro de Personas"
+        android:text="Actualización de Registros."
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-
-
-
+    <ImageButton
+        android:id="@+id/btnatras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/atras" />
 </androidx.constraintlayout.widget.ConstraintLayout>

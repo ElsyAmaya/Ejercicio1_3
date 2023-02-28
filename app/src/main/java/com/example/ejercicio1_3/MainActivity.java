@@ -5,22 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.ejercicio1_3.configuracion.SQLiteConexion;
 
-import java.io.ByteArrayOutputStream;
-
-import transacciones.Transacciones;
+import com.example.ejercicio1_3.transacciones.Transacciones;
 
 public class MainActivity extends AppCompatActivity {
-    SQLiteConexion conexion = new SQLiteConexion(this, Transacciones.NameDatabase,null,1);
+    SQLiteConexion conexion = new SQLiteConexion(this, Transacciones.NameDatabase, null, 1);
     SQLiteDatabase db;
     EditText nombres, apellidos, edad, correo, direccion;
     Button btng, btnr;
@@ -32,17 +28,26 @@ public class MainActivity extends AppCompatActivity {
 
         nombres = (EditText) findViewById(R.id.txtnombre);
         apellidos = (EditText) findViewById(R.id.txtapellido);
-        edad =  (EditText) findViewById(R.id.txtedad);
-        correo =  (EditText) findViewById(R.id.txtcorreo);
-        direccion =  (EditText) findViewById(R.id.txtdireccion);
-        btng =  (Button) findViewById(R.id.btnguardar);
-        btnr =  (Button) findViewById(R.id.btnregistros);
+        edad = (EditText) findViewById(R.id.txtedad);
+        correo = (EditText) findViewById(R.id.txtcorreo);
+        direccion = (EditText) findViewById(R.id.txtdireccion);
+        btng = (Button) findViewById(R.id.btnactualizar);
+        btnr = (Button) findViewById(R.id.btnregistros);
 
         btng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SalvarPersonas();
-
+                if (nombres.getText().toString().equals(Transacciones.Empty)) {
+                    Toast.makeText(getApplicationContext(), "Debe de escribir un nombre", Toast.LENGTH_LONG).show();
+                } else if (apellidos.getText().toString().equals(Transacciones.Empty)) {
+                    Toast.makeText(getApplicationContext(), "Debe de escribir un apellido", Toast.LENGTH_LONG).show();
+                } else if (edad.getText().toString().equals(Transacciones.Empty)) {
+                    Toast.makeText(getApplicationContext(), "Debe de escribir su edad", Toast.LENGTH_LONG).show();
+                } else if (correo.getText().toString().equals(Transacciones.Empty)) {
+                    Toast.makeText(getApplicationContext(), "Debe de escribir su correo", Toast.LENGTH_LONG).show();
+                } else {
+                    SalvarPersonas();
+                }
             }
         });
         btnr.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     private void SalvarPersonas() {
         try {
             conexion = new SQLiteConexion(this, Transacciones.NameDatabase, null, 1);
@@ -64,21 +70,18 @@ public class MainActivity extends AppCompatActivity {
             ContentValues valores = new ContentValues();
 
             valores.put(Transacciones.nombres, nombres.getText().toString());
-            valores.put(Transacciones.apellidos,apellidos.getText().toString());
-            valores.put(Transacciones.edad,edad.getText().toString());
-            valores.put(Transacciones.correo,correo.getText().toString());
-            valores.put(Transacciones.direccion,direccion.getText().toString());
+            valores.put(Transacciones.apellidos, apellidos.getText().toString());
+            valores.put(Transacciones.edad, edad.getText().toString());
+            valores.put(Transacciones.correo, correo.getText().toString());
+            valores.put(Transacciones.direccion, direccion.getText().toString());
 
+            Long Resultado = db.insert(Transacciones.tablapersonas, Transacciones.id, valores);
 
-
-
-            Long resultado = db.insert(Transacciones.tablapersonas, Transacciones.id, valores);
-
-            Toast.makeText(getApplicationContext(), "Registro ingreso con exito, Codigo ",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Registro ingreso con exito, Codigo," + Resultado.toString(), Toast.LENGTH_LONG).show();
             db.close();
             ClearScreen();
         } catch (Exception ex) {
-            Toast.makeText(getApplicationContext(),"Se produjo un error",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Se produjo un error", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -89,5 +92,4 @@ public class MainActivity extends AppCompatActivity {
         edad.setText(Transacciones.Empty);
         direccion.setText(Transacciones.Empty);
     }
-
 }
