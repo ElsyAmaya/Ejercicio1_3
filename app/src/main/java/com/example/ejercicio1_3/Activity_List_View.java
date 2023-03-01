@@ -54,7 +54,7 @@ public class Activity_List_View extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.txtlista);
         btneliminar = (Button) findViewById(R.id.btneliminar);
         btnmodificar = (Button) findViewById(R.id.btnmodificar);
-         btnatras = (ImageButton) findViewById(R.id.btnatras);
+        btnatras = (ImageButton) findViewById(R.id.btnatras);
 
         ObtenerListaPersonas();
         ArrayAdapter adp = new ArrayAdapter(this, android.R.layout.simple_list_item_checked, arreglopersonas);
@@ -152,7 +152,7 @@ public class Activity_List_View extends AppCompatActivity {
         btnatras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Activity_List_View.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
